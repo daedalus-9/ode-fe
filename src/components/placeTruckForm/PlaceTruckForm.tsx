@@ -29,8 +29,8 @@ export function PlaceTruckForm({
     const formData = new FormData(e.currentTarget);
     const data = {
       fullname: formData.get("fullname")?.toString() || "",
+      email: formData.get("email")?.toString() || "",
       phone: formData.get("phoneNumber")?.toString() || "",
-      vehicleType: formData.get("vehicleType")?.toString() || "",
       location: formData.get("location")?.toString() || "",
       availableFrom: formData.get("availableFrom")?.toString() || "",
       availableUntil: formData.get("availableUntil")?.toString() || "",
@@ -80,8 +80,8 @@ export function PlaceTruckForm({
         <form className="my-6 space-y-4" onSubmit={handleSubmit}>
           <input type="hidden" name="region" value={region} />
 
-          {/* Row 1: Name + Phone */}
-          <div className="flex flex-row gap-4 md:flex-row">
+          {/* Row 1: Name + Email */}
+          <div className="flex flex-col gap-4 md:flex-row">
             <LabelInputContainer className="flex-1">
               <Label htmlFor="fullname" className="text-zinc-300">
                 Full name
@@ -96,6 +96,23 @@ export function PlaceTruckForm({
             </LabelInputContainer>
 
             <LabelInputContainer className="flex-1">
+              <Label htmlFor="email" className="text-zinc-300">
+                Email
+              </Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                required
+                className="bg-zinc-700 text-zinc-50 placeholder:text-zinc-400 focus:ring-zinc-400"
+              />
+            </LabelInputContainer>
+          </div>
+
+          {/* Row 2: Phone + Location */}
+          <div className="flex flex-col gap-4 md:flex-row">
+            <LabelInputContainer className="flex-1">
               <Label htmlFor="phoneNumber" className="text-zinc-300">
                 Phone number
               </Label>
@@ -106,28 +123,6 @@ export function PlaceTruckForm({
                 required
                 className="bg-zinc-700 text-zinc-50 placeholder:text-zinc-400 focus:ring-zinc-400"
               />
-            </LabelInputContainer>
-          </div>
-
-          {/* Row 2: Vehicle + Location */}
-          <div className="flex flex-col gap-4 md:flex-row">
-            <LabelInputContainer className="flex-1">
-              <Label htmlFor="vehicleType" className="text-zinc-300">
-                Vehicle type
-              </Label>
-              <select
-                id="vehicleType"
-                name="vehicleType"
-                required
-                className="rounded-md border border-zinc-600 bg-zinc-700 px-3 py-2 text-zinc-50 focus:ring-zinc-400"
-              >
-                <option value="">Select vehicle</option>
-                <option>7.5 tonne</option>
-                <option>18 tonne</option>
-                <option>26 tonne</option>
-                <option>Artic / HGV</option>
-                <option>Flatbed / Specialist</option>
-              </select>
             </LabelInputContainer>
 
             <LabelInputContainer className="flex-1">
@@ -145,7 +140,7 @@ export function PlaceTruckForm({
           </div>
 
           {/* Row 3: Dates */}
-          <div className="flex flex-row gap-">
+          <div className="flex flex-row gap-4">
             <LabelInputContainer className="flex-1">
               <Label htmlFor="availableFrom" className="text-zinc-300">
                 Available from
@@ -154,6 +149,7 @@ export function PlaceTruckForm({
                 id="availableFrom"
                 name="availableFrom"
                 type="date"
+                required
                 className="bg-zinc-700 text-zinc-50 placeholder:text-zinc-400 focus:ring-zinc-400"
               />
             </LabelInputContainer>
@@ -204,6 +200,13 @@ export function PlaceTruckForm({
                   placeholder={`Any extra details...`}
                   className="bg-zinc-700 text-zinc-50 placeholder:text-zinc-400 focus:ring-zinc-400"
                 />
+              </LabelInputContainer>
+
+              <LabelInputContainer className="flex-row items-center gap-2">
+                <Input id="optOut" name="optOut" type="checkbox" />
+                <Label htmlFor="optOut" className="text-zinc-300">
+                  Opt-out of marketing emails
+                </Label>
               </LabelInputContainer>
             </div>
           )}
