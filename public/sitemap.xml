@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Owner Driver Exchange Homepage -->
   <url>
     <loc>https://www.ownerdriverexchange.co.uk/</loc>
     <lastmod>2026-04-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://www.ownerdriverexchange.co.uk/public/assets/images/truck_bg.webp</image:loc>
-      <image:caption>Owner Driver Exchange – HGV Work & Haulage UK</image:caption>
-    </image:image>
   </url>
 
 </urlset>
