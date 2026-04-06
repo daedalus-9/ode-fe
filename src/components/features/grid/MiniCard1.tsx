@@ -1,10 +1,12 @@
+"use client";
+
 import { BubbleButton } from "@/components/buttons/BubbleButton";
+import { scrollToForm } from "@/components/utils/scrollToForm";
 import { motion } from "framer-motion";
 import React from "react";
 import { FiTruck } from "react-icons/fi";
 import { CalloutChip } from "../../utils/CalloutChip";
 import { Card } from "../../utils/Card";
-import { scrollToForm } from "@/components/utils/scrollToForm";
 
 export const MiniCard1 = () => {
   return (
@@ -15,11 +17,11 @@ export const MiniCard1 = () => {
           Reliable payments you can count on
         </p>
         <p className="mb-6 text-center text-zinc-400">
-          We believe trust starts with transparency, fair payment terms and
-          consistent cashflow for every subcontractor we work with.
+          Trust starts with transparency. We provide fair payment terms and
+          consistent cashflow for all subcontractors we work with.
         </p>
 
-        {/* Move button after FreightPing for stacking */}
+        {/* Truck icon with pulsing animation */}
         <FreightPing />
 
         <BubbleButton
@@ -39,7 +41,7 @@ const FreightPing = () => {
   return (
     <div className="absolute bottom-0 left-1/2 w-fit -translate-x-1/2 translate-y-1/2">
       {/* Central truck icon */}
-      <FiTruck className="relative z-10 text-7xl text-amber-300 drop-shadow-[0_0_12px_rgba(251,191,36,0.5)]" />
+      <FiTruck className="relative z-10 text-7xl text-zinc-300 drop-shadow-lg" />
 
       {/* Pulsing rings */}
       <Band delay={0} />
@@ -73,7 +75,7 @@ const Band = ({ delay }: { delay: number }) => {
         ease: "linear",
         delay,
       }}
-      className="absolute left-[50%] top-[50%] z-0 size-80 rounded-full border border-amber-600/60 bg-gradient-to-br from-amber-500/40 to-amber-900/20"
+      className="absolute left-[50%] top-[50%] z-0 h-20 w-20 rounded-full border border-zinc-500/40 bg-gradient-to-br from-zinc-400/20 to-zinc-600/10"
     />
   );
 };

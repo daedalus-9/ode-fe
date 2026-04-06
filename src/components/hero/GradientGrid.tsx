@@ -16,7 +16,7 @@ const GradientGrid = () => {
       }}
       className="absolute inset-0 z-0"
     >
-      <div className="absolute inset-0 z-0 bg-grid-blue-900/50" />
+      <div className="absolute inset-0 z-0 bg-grid-amber-900/50" />
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-zinc-950/0 to-zinc-950" />
     </motion.div>
   );

@@ -8,6 +8,7 @@ export const TrustedAcrossUK = () => {
       className="relative mx-auto max-w-7xl overflow-hidden border-t border-zinc-800 py-10"
       aria-labelledby="trusted-uk-haulage"
     >
+      {/* Heading */}
       <motion.span
         id="trusted-uk-haulage"
         initial={{ opacity: 0, y: 15 }}
@@ -16,9 +17,10 @@ export const TrustedAcrossUK = () => {
         viewport={{ once: true }}
         className="mx-auto mb-10 block w-fit bg-gradient-to-br from-zinc-200 to-zinc-400 bg-clip-text text-center text-lg font-medium text-transparent"
       >
-        Trusted UK partners for return loads and nationwide haulage
+        Trusted by owner drivers and hauliers across the UK
       </motion.span>
 
+      {/* Continuous scrolling regions */}
       <div className="relative flex overflow-hidden">
         <TranslateWrapper>
           <RegionItems />
@@ -32,6 +34,7 @@ export const TrustedAcrossUK = () => {
         <div className="pointer-events-none absolute right-0 top-0 h-full w-1/4 bg-gradient-to-l from-zinc-950 to-transparent" />
       </div>
 
+      {/* Supporting paragraph */}
       <motion.p
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -39,10 +42,10 @@ export const TrustedAcrossUK = () => {
         viewport={{ once: true }}
         className="mx-auto mt-8 max-w-3xl text-center text-base text-zinc-400 md:text-lg"
       >
-        Logic Freight supports hauliers and transport partners with{" "}
-        <strong>return loads</strong> across England, Scotland, and Wales. We
-        help reduce empty running, increase utilisation, and keep UK freight
-        moving efficiently for subcontractors and logistics providers alike.
+        Owner Driver Exchange connects UK-based owner drivers and small fleets
+        with <strong>ongoing haulage work</strong>. Share your truck
+        availability to reduce empty miles, boost earnings, and secure reliable
+        routes across England, Scotland, Wales, and Northern Ireland.
       </motion.p>
     </section>
   );
@@ -73,9 +76,11 @@ const RegionItems = () => (
     <Region name="South Wales" />
     <Region name="Midlands" />
     <Region name="South West" />
+    <Region name="Northern Ireland" />
   </>
 );
 
+// === Single region item ===
 const Region = ({ name }: { name: string }) => (
   <div className="flex items-center gap-2 whitespace-nowrap text-lg font-medium text-zinc-300">
     <svg

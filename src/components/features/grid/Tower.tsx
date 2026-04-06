@@ -1,3 +1,5 @@
+"use client";
+
 import { CornerBlur } from "@/components/utils/CornerBlur";
 import { PulseLine } from "@/components/utils/PulseLine";
 import { motion } from "framer-motion";
@@ -19,11 +21,11 @@ export const Tower = () => {
         <PulseLine />
 
         <CalloutChip>Human touch</CalloutChip>
-        <p className="mb-2 text-2xl">Relationships that move freight</p>
+        <p className="mb-2 text-2xl">Connections that drive earnings</p>
         <p className="mb-8 text-zinc-400">
-          Behind every load is a real conversation. We build lasting
-          relationships with our partners, supporting them with fairness,
-          clarity, and real people who care.
+          Behind every route is a real conversation. We help owner drivers and
+          small fleets find consistent work while keeping relationships
+          transparent, fair, and hassle-free.
         </p>
 
         <CornerBlur />
@@ -46,20 +48,20 @@ const Mockup = () => (
 const MockupSideBar = () => (
   <div className="h-full w-24 border-r border-zinc-700 bg-zinc-900 p-2">
     <div className="mb-4 flex items-center justify-between">
-      <FiUsers className="text-zinc-700" />
-      <FiBell className="text-blue-500" />
+      <FiUsers className="text-zinc-500" />
+      <FiBell className="text-zinc-400" />
     </div>
     <div className="space-y-2">
       <div className="flex items-center gap-1 rounded bg-zinc-700 px-1 py-0.5 text-xs text-zinc-200">
-        <FiTruck />
+        <FiTruck className="text-zinc-300" />
         Loads
       </div>
-      <div className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-zinc-600">
-        <FiMapPin />
+      <div className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-zinc-400">
+        <FiMapPin className="text-zinc-400" />
         Routes
       </div>
-      <div className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-zinc-600">
-        <FiMessageCircle />
+      <div className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-zinc-400">
+        <FiMessageCircle className="text-zinc-400" />
         Chat
       </div>
     </div>
@@ -68,9 +70,9 @@ const MockupSideBar = () => (
 
 const MockupTopBar = () => (
   <div className="flex gap-1 border-b border-zinc-700 bg-zinc-950 p-2">
-    <div className="size-2 rounded-full bg-red-600"></div>
-    <div className="size-2 rounded-full bg-yellow-600"></div>
-    <div className="size-2 rounded-full bg-green-600"></div>
+    <div className="h-2 w-2 rounded-full bg-red-600"></div>
+    <div className="h-2 w-2 rounded-full bg-yellow-600"></div>
+    <div className="h-2 w-2 rounded-full bg-green-600"></div>
   </div>
 );
 
@@ -80,25 +82,25 @@ const MockupMain = () => {
       route: "Birmingham → Manchester",
       driver: "John Smith Logistics",
       time: "Matched 2 mins ago",
-      color: "text-green-400",
+      color: "text-zinc-300",
     },
     {
       route: "Leeds → Bristol",
       driver: "John Smith Transport",
       time: "Matched 5 mins ago",
-      color: "text-blue-400",
+      color: "text-zinc-300",
     },
     {
       route: "London → Liverpool",
       driver: "John Smith Haulage",
       time: "Matched 8 mins ago",
-      color: "text-yellow-400",
+      color: "text-zinc-300",
     },
     {
       route: "Cardiff → Sheffield",
       driver: "John Smith Freight",
       time: "Matched 12 mins ago",
-      color: "text-purple-400",
+      color: "text-zinc-300",
     },
   ]);
 
@@ -119,7 +121,7 @@ const MockupMain = () => {
     <div className="relative w-full">
       <div className="relative z-0 w-full p-4">
         <div className="w-full border-b border-zinc-700 pb-2 text-xs font-semibold uppercase text-zinc-500">
-          <span>Recent Load Matches</span>
+          <span>Recent Haulage Matches</span>
         </div>
 
         {matches.map((m) => (
@@ -133,9 +135,9 @@ const MockupMain = () => {
               <FiTruck className={`${m.color} shrink-0`} />
               <span className="text-zinc-300">{m.route}</span>
             </div>
-            <div className="ml-6 text-zinc-500">
+            <div className="ml-6 text-zinc-400">
               <p>{m.driver}</p>
-              <p className="text-[10px] text-zinc-600">{m.time}</p>
+              <p className="text-[10px] text-zinc-500">{m.time}</p>
             </div>
           </motion.div>
         ))}

@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { FaMailBulk } from "react-icons/fa";
+import { FaMailBulk, FaPhone } from "react-icons/fa";
 import { FiArrowRight, FiChevronDown, FiMenu, FiX } from "react-icons/fi";
 import useMeasure from "react-use-measure";
 
@@ -29,20 +29,21 @@ const FlyoutNav = () => {
           : "bg-neutral-950/0 py-6 shadow-none"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between">
+      <div className="mx-auto flex max-w-7xl items-center justify-center">
         <Link href="/">
-          <img
+          {/* <img
             src="/assets/images/logo.png"
             alt="logo"
             width={200}
             height={90}
-          />
+          /> */}
+          Owner Driver Exchange
         </Link>
-        <div className="hidden gap-6 lg:flex">
-          <Links />
+        <div className=" gap-2 lg:flex">
+          {/* <Links /> */}
           <CTAs />
         </div>
-        <MobileMenu />
+        {/* <MobileMenu /> */}
       </div>
     </nav>
   );
@@ -81,7 +82,7 @@ const NavLink = ({
         {children}
         <span
           style={{ transform: showFlyout ? "scaleX(1)" : "scaleX(0)" }}
-          className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-emerald-300 transition-transform duration-300 ease-out"
+          className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-slate-300 transition-transform duration-300 ease-out"
         />
       </a>
 
@@ -104,19 +105,20 @@ const NavLink = ({
 
 // -------- CTA BUTTONS --------
 const CTAs = () => (
-  <div className="flex items-center gap-3">
+  <div className="ml-6 flex items-center gap-3">
     <a
       href="mailto:traffic@logic-freight.co.uk"
       className="flex items-center gap-2 rounded-lg border-2 border-white px-4 py-2 font-semibold text-white transition-colors hover:bg-white hover:text-black"
     >
       <FaMailBulk />
-      <span>Email Us</span>
+      <span>Email</span>
     </a>
     <a
       href="tel:01633441457"
-      className="rounded-lg border-2 border-emerald-300 bg-emerald-300 px-4 py-2 font-semibold text-black transition-colors hover:border-emerald-600 hover:bg-emerald-600 hover:text-white"
+      className="flex items-center gap-2 rounded-lg border-2 border-white px-4 py-2 font-semibold text-white transition-colors hover:bg-white hover:text-black"
     >
-      📞 01633 441457
+      <FaPhone />
+      <span className="ml-2">Call</span>
     </a>
   </div>
 );
@@ -165,7 +167,7 @@ const SubcontractorsContent = ({
       <Link
         href="/subcontractors/join"
         onClick={() => setMenuOpen(false)}
-        className="inline-block rounded-md bg-emerald-500 px-6 py-2 text-lg font-semibold text-black hover:bg-emerald-600"
+        className="inline-block rounded-md bg-slate-500 px-6 py-2 text-lg font-semibold text-black hover:bg-slate-600"
       >
         Join as a Haulier
       </Link>

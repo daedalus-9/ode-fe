@@ -16,35 +16,32 @@ export const Content = () => {
     <section className="relative bg-gradient-to-b from-zinc-950 to-zinc-900">
       <MaxWidthWrapper className="relative z-20 pb-20 pt-20 md:pb-28 md:pt-40">
         <SectionHeadingSpacing>
-          <SectionHeadingSpacing>
             <SectionHeading>
-              UK return loads made simple
+            Owner Driver Work Made Simple
               <br />
-              <span className="bg-gradient-to-br from-blue-400 to-blue-700 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-amber-400 to-amber-700 bg-clip-text text-transparent">
                 find return loads, backloads and available loads near you
               </span>
             </SectionHeading>
 
             <SectionSubheading>
-              A faster way to find and match <strong>return loads UK</strong>,
-              <strong>backloads</strong>, and{" "}
-              <strong>available loads near you</strong>. Connect with drivers
-              across England, Scotland and Wales to cut empty miles and maximise
-              haulage efficiency.
+            A smarter way to get matched with{" "}
+            <strong>ongoing owner driver loads</strong> across the UK. Reduce
+            empty miles, boost earnings, and connect with businesses that need
+            regular transport in England, Scotland, Wales, and Northern Ireland.
             </SectionSubheading>
-          </SectionHeadingSpacing>
         </SectionHeadingSpacing>
 
         <Grid />
 
         {/* Divider */}
-        <div className="my-12 h-[1px] w-full bg-gradient-to-r from-blue-800/0 via-blue-400/50 to-blue-800/0 md:my-20" />
+        <div className="my-12 h-[1px] w-full bg-gradient-to-r from-amber-800/0 via-amber-400/50 to-amber-800/0 md:my-20" />
 
         <SimpleGrid />
 
         <div className="mt-16 flex justify-center">
           <BubbleButton onClick={() => scrollToForm()}>
-            Join the Return Loads UK Network
+            Join the Owner Driver Exchange Network
           </BubbleButton>
         </div>
       </MaxWidthWrapper>
@@ -53,9 +50,9 @@ export const Content = () => {
 };
 
 const Grid = () => (
-  <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
+  <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
     <Tower />
-    <div className="col-span-1 grid grid-cols-2 gap-4 lg:col-span-8 lg:grid-cols-2">
+    <div className="col-span-1 grid grid-cols-2 gap-6 lg:col-span-8 lg:grid-cols-2">
       <MiniCard1 />
       <MiniCard2 />
       <LongCard />

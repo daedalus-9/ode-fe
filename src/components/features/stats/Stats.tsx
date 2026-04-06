@@ -64,7 +64,7 @@ const Stat = ({ num, suffix, decimals = 0, subheading }: Props) => {
     <div className="flex w-72 flex-col items-center py-8 sm:py-0">
       <p className="mb-2 text-center text-7xl font-semibold text-zinc-50 sm:text-6xl">
         <span ref={ref}></span>
-        <span className="text-blue-500">{suffix}</span>
+        <span className="text-amber-500">{suffix}</span>
       </p>
       <p className="max-w-48 text-center text-zinc-500">{subheading}</p>
     </div>

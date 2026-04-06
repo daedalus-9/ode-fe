@@ -2,9 +2,9 @@ import { GhostButton } from "@/components/buttons/GhostButton";
 import { useRouter } from "next/router";
 
 const countries = [
-  { name: "Return Loads England", href: "/return-loads-england" },
-  { name: "Return Loads Scotland", href: "/return-loads-scotland" },
-  { name: "Return Loads Wales", href: "/return-loads-wales" },
+  { name: "Owner Driver Work in England", href: "/haulage-work-england" },
+  { name: "Owner Driver Work in Scotland", href: "/haulage-work-scotland" },
+  { name: "Owner Driver Work in Wales", href: "/haulage-work-wales" },
 ];
 
 export const CountryLinksSection = () => {
@@ -13,11 +13,12 @@ export const CountryLinksSection = () => {
   return (
     <section className="relative mx-auto max-w-4xl py-16 text-center">
       <h2 className="mb-6 text-2xl font-bold text-zinc-50 sm:text-3xl">
-        Find Return Loads in Your Area
+        Ongoing Haulage Work Across the UK
       </h2>
       <p className="mb-12 text-zinc-400">
-        Quickly navigate to return loads available across England, Scotland, and
-        Wales.
+        Quickly find owner driver jobs and reliable routes in England, Scotland,
+        and Wales. Share your availability to reduce empty miles and secure
+        consistent work.
       </p>
 
       {/* Country Buttons */}

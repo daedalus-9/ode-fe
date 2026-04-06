@@ -122,7 +122,7 @@ const Benefit = ({ text, checked }: BenefitType) => {
   return (
     <div className="flex items-center gap-3">
       {checked ? (
-        <span className="grid size-5 place-content-center rounded-full bg-blue-600 text-sm text-zinc-50">
+        <span className="grid size-5 place-content-center rounded-full bg-amber-600 text-sm text-zinc-50">
           <FiCheck />
         </span>
       ) : (

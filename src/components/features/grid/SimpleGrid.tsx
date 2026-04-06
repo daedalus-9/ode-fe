@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { IconType } from "react-icons";
 import { FiBox, FiClock, FiMapPin, FiTruck, FiZap } from "react-icons/fi";
@@ -28,7 +30,7 @@ export const SimpleGrid = () => (
     <Item
       Icon={FiMapPin}
       title="Nationwide coverage"
-      subtitle="From Inverness to Penzance, Logic Freight keeps the UK’s return load network moving efficiently."
+      subtitle="From Inverness to Penzance, Owner Driver Exchange keeps the UK’s return load network moving efficiently."
     />
     <Item
       Icon={FiZap}
@@ -48,9 +50,9 @@ const Item = ({
   subtitle: string;
 }) => {
   return (
-    <div>
+    <div className="flex flex-col gap-1">
       <h4 className="mb-1.5 flex items-start text-lg font-medium md:text-xl">
-        <Icon className="mr-1.5 h-[26px] text-amber-400" />
+        <Icon className="mr-2 h-[26px] text-zinc-400" />
         {title}
       </h4>
       <p className="text-sm text-zinc-400 md:text-base">{subtitle}</p>

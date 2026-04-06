@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimationProps, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import {
@@ -82,7 +84,7 @@ const SpinningFreightIcons = () => {
           sizes.iconWrapperWidth +
           sizes.ringPadding,
       }}
-      className="absolute right-0 top-0 z-0 grid translate-x-1/3 place-content-center rounded-full bg-amber-900/30 shadow-inner"
+      className="absolute right-0 top-0 z-0 grid translate-x-1/3 place-content-center rounded-full bg-zinc-800/30 shadow-inner"
     >
       <motion.div
         initial={{ rotate: 0 }}
@@ -118,7 +120,7 @@ const SpinningFreightIcons = () => {
               initial={{ rotate: 0 }}
               animate={{ rotate: -360 }}
               transition={TRANSITION}
-              className="absolute grid place-content-center rounded-full bg-gradient-to-br from-amber-500 to-amber-700 text-amber-50 shadow-lg"
+              className="absolute grid place-content-center rounded-full bg-zinc-700/60 text-zinc-50 shadow-md"
             >
               <icon.Icon style={{ fontSize: sizes.logoFontSize }} />
             </motion.div>
@@ -155,7 +157,10 @@ const TRANSITION: AnimationProps["transition"] = {
 };
 
 const useWindowSize = () => {
-  const [size, setSize] = useState<{ width: number | undefined; height: number | undefined }>({
+  const [size, setSize] = useState<{
+    width: number | undefined;
+    height: number | undefined;
+  }>({
     width: undefined,
     height: undefined,
   });

@@ -31,7 +31,7 @@ export const Beam = ({
         top,
         left,
       }}
-      className="absolute z-10 h-[64px] w-[1px] bg-gradient-to-b from-blue-500/0 to-blue-500"
+      className="absolute z-10 h-[64px] w-[1px] bg-gradient-to-b from-amber-500/0 to-amber-500"
     />
   );
 };

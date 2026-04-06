@@ -112,7 +112,7 @@ const LoadView = ({ showStatus }: { showStatus: boolean }) => (
       <span className="font-semibold">Goods:</span> Palletised general cargo
     </p>
     {showStatus && (
-      <p className="font-semibold text-blue-300">
+      <p className="font-semibold text-amber-300">
         Status: Searching for available hauliers…
       </p>
     )}

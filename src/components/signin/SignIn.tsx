@@ -59,7 +59,7 @@ const Heading = () => (
       <h1 className="text-2xl font-semibold">Sign in to your account</h1>
       <p className="text-zinc-400">
         Don't have an account?{" "}
-        <Link href="#" className="text-blue-400">
+        <Link href="#" className="text-amber-400">
           Create one.
         </Link>
       </p>
@@ -104,7 +104,7 @@ const Email = () => {
           id="email-input"
           type="email"
           placeholder="your.email@provider.com"
-          className="w-full rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 placeholder-zinc-500 ring-1 ring-transparent transition-shadow focus:outline-0 focus:ring-blue-700"
+          className="w-full rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 placeholder-zinc-500 ring-1 ring-transparent transition-shadow focus:outline-0 focus:ring-amber-700"
         />
       </div>
       <div className="mb-6">
@@ -112,7 +112,7 @@ const Email = () => {
           <label htmlFor="password-input" className="block text-zinc-400">
             Password
           </label>
-          <Link href="#" className="text-sm text-blue-400">
+          <Link href="#" className="text-sm text-amber-400">
             Forgot?
           </Link>
         </div>
@@ -120,7 +120,7 @@ const Email = () => {
           id="password-input"
           type="password"
           placeholder="••••••••••••"
-          className="w-full rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 placeholder-zinc-500 ring-1 ring-transparent transition-shadow focus:outline-0 focus:ring-blue-700"
+          className="w-full rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 placeholder-zinc-500 ring-1 ring-transparent transition-shadow focus:outline-0 focus:ring-amber-700"
         />
       </div>
       <SplashButton type="submit" className="w-full">
@@ -133,11 +133,11 @@ const Email = () => {
 const Terms = () => (
   <p className="mt-9 text-xs text-zinc-400">
     By signing in, you agree to our{" "}
-    <Link href="#" className="text-blue-400">
+    <Link href="#" className="text-amber-400">
       Terms & Conditions
     </Link>{" "}
     and{" "}
-    <Link href="#" className="text-blue-400">
+    <Link href="#" className="text-amber-400">
       Privacy Policy.
     </Link>
   </p>

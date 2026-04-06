@@ -19,7 +19,7 @@ const Content = () => {
         transition={{ duration: 1.25, ease: "easeInOut" }}
       >
         <GlowingChip>
-          Return Loads UK • Backloads • Haulage Work • Available Loads Near You
+          Owner Driver Loads • Haulage Work UK • HGV Work • Reduce Empty Miles
         </GlowingChip>
       </motion.div>
 
@@ -30,7 +30,7 @@ const Content = () => {
         transition={{ duration: 1.25, delay: 0.25, ease: "easeInOut" }}
         className="mb-4 max-w-[38rem] text-3xl font-bold leading-tight text-zinc-50 sm:text-4xl md:text-5xl lg:text-6xl"
       >
-        Return Loads UK
+        Owner Driver Exchange
       </motion.h1>
 
       {/* SEO-focused paragraph */}
@@ -40,11 +40,12 @@ const Content = () => {
         transition={{ duration: 1.25, delay: 0.5, ease: "easeInOut" }}
         className="mb-9 max-w-xl text-base text-zinc-400 sm:text-lg md:text-xl"
       >
-        Secure reliable and verified return loads across the UK. Find available
-        loads near you, backloads, and full or part-load opportunities
-        throughout England, Scotland, and Wales. Reduce empty running, cut fuel
-        costs, and keep your fleet profitable with fast, real-time load matches
-        tailored for UK hauliers.
+        Find consistent, reliable haulage work across the UK. Owner Driver
+        Exchange helps owner drivers and small fleets secure ongoing HGV work by
+        sharing where their truck will be and when it is available. Instead of
+        chasing one-off loads, get matched with businesses that need regular
+        transport. Reduce empty miles, increase earnings, and make every journey
+        count with smarter load planning for owner drivers in the UK.
       </motion.p>
 
       {/* CTA buttons */}

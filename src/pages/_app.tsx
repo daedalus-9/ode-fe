@@ -9,29 +9,32 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         {/* Default meta tags */}
-        <title>Return Loads UK | Find Return Loads Near Me</title>
+        <title>Owner Driver Exchange | Find HGV Work Across the UK</title>
         <meta
           name="description"
-          content="Return Loads UK made simple. Find UK return loads, return loads near me, backloads, reloads, and available loads across England, Scotland, and Wales."
+          content="Owner Driver Exchange helps owner drivers and small fleets find reliable HGV work across the UK. Reduce empty miles, get matched with businesses, and plan smarter journeys."
         />
         <meta
           name="keywords"
-          content="return loads UK, return loads near me, backloads, reloads, available loads, UK freight"
+          content="owner driver exchange, HGV work UK, haulage jobs, owner driver loads, reduce empty miles"
         />
         <meta name="robots" content="index, follow" />
 
-        {/* Fallback Open Graph */}
+        {/* Open Graph */}
         <meta
           property="og:title"
-          content="Return Loads UK | Get Your Return Loads Now"
+          content="Owner Driver Exchange | Secure HGV Work Across the UK"
         />
         <meta
           property="og:description"
-          content="Find verified return loads across the UK instantly. Connect with trusted hauliers and reduce empty miles."
+          content="Find regular haulage work, share your truck availability, and reduce empty miles with Owner Driver Exchange."
         />
-        <meta property="og:image" content="/assets/truck_bg.webp" />
+        <meta property="og:image" content="/assets/images/truck_bg.webp" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.returnloadsuk.co.uk" />
+        <meta
+          property="og:url"
+          content="https://www.ownerdriverexchange.co.uk"
+        />
       </Head>
 
       <FlyoutNav />

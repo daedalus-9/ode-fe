@@ -20,35 +20,40 @@ const barlowFont = Barlow({
 });
 
 export default function Home() {
-  const title = "Return Loads UK";
+  const title =
+    "Owner Driver Exchange | HGV & Owner Driver Loads Across the UK";
   const description =
-    "Return Loads UK helps HGV drivers and haulage companies find verified return loads, UK backloads, and available freight nationwide. Reduce empty miles and secure consistent work with trusted UK load matching.";
+    "Owner Driver Exchange connects UK owner drivers and small fleets with steady, ongoing haulage work. Post your truck availability, reduce empty miles, and get matched with businesses that need reliable transport across the UK.";
 
   const keywords = [
-    "return loads",
-    "return loads UK",
-    "UK return loads",
-    "return loads near me",
-    "return loads platform",
-    "backloads",
+    "owner driver UK",
+    "owner driver loads",
+    "haulage work UK",
+    "HGV work",
+    "loads for owner drivers",
+    "reduce empty miles",
+    "owner driver jobs",
+    "HGV owner driver",
+    "UK haulage",
+    "transport work UK",
+    "owner driver exchange",
+    "find haulage work UK",
+    "ongoing haulage work",
+    "truck availability UK",
     "backloads UK",
-    "HGV return loads",
-    "haulage loads UK",
-    "load matching UK",
-    "find loads UK",
   ];
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Return Loads UK",
-    url: "https://www.returnloadsuk.co.uk",
+    name: "Owner Driver Exchange",
+    url: "https://www.ownerdriver.exchange",
     description:
-      "Return Loads UK helps hauliers find verified return loads, backloads, and available haulage work across the UK.",
+      "Owner Driver Exchange connects UK owner drivers and small fleets with businesses that need regular, reliable transport. Post your truck availability and get matched with ongoing haulage work across the UK.",
     email: "traffic@logic-freight.co.uk",
     telephone: "+44 1633 441457",
-    logo: "https://www.returnloadsuk.co.uk/public/assets/images/logo.png",
-    image: "https://www.returnloadsuk.co.uk/public/assets/images/truck_bg.webp",
+    logo: "https://www.ownerdriver.exchange/assets/images/logo.png",
+    image: "https://www.ownerdriver.exchange/assets/images/truck_bg.webp",
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -67,9 +72,26 @@ export default function Home() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.returnloadsuk.co.uk",
+        item: "https://www.ownerdriver.exchange",
       },
     ],
+  };
+
+  const serviceData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Owner Driver Load Matching",
+    provider: {
+      "@type": "Organization",
+      name: "Owner Driver Exchange",
+    },
+    description:
+      "A UK platform that matches owner drivers and small haulage fleets with businesses seeking regular, reliable transport. Post your truck availability to find ongoing HGV work and reduce empty miles.",
+    areaServed: {
+      "@type": "Country",
+      name: "United Kingdom",
+    },
+    serviceType: "Haulage Load Matching",
   };
 
   return (
@@ -78,17 +100,17 @@ export default function Home() {
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords.join(", ")} />
-        <link rel="canonical" href="https://www.returnloadsuk.co.uk" />
+        <link rel="canonical" href="https://www.ownerdriver.exchange" />
 
         {/* Open Graph */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:url" content="https://www.returnloadsuk.co.uk" />
+        <meta property="og:url" content="https://www.ownerdriver.exchange" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Return Loads UK" />
+        <meta property="og:site_name" content="Owner Driver Exchange" />
         <meta
           property="og:image"
-          content="https://www.returnloadsuk.co.uk/public/assets/images/truck_bg.webp"
+          content="https://www.ownerdriver.exchange/assets/images/truck_bg.webp"
         />
 
         {/* Twitter */}
@@ -97,7 +119,7 @@ export default function Home() {
         <meta name="twitter:description" content={description} />
         <meta
           name="twitter:image"
-          content="https://www.returnloadsuk.co.uk/public/assets/images/truck_bg.webp"
+          content="https://www.ownerdriver.exchange/assets/images/truck_bg.webp"
         />
 
         {/* Structured Data */}
@@ -109,17 +131,21 @@ export default function Home() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceData) }}
+        />
       </Head>
 
       <Hero />
-      <PlaceTruckForm />
+      {/* <PlaceTruckForm /> */}
       <TrustedAcrossUK />
       <CountryLinksSection />
       <FeatureGrid />
       <CodeDemo />
       <Carousel />
-      <Customers />
-      <Stats />
+      {/* <Customers /> */}
+      {/* <Stats /> */}
       <FiftyFiftyCard />
       <CTA />
     </main>

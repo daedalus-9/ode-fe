@@ -21,7 +21,7 @@ export const FiftyFiftyCard = () => {
       </section>
       <SplashButton
         onClick={() => scrollToForm()}
-        className="mx-auto mb-10 mt-6 flex items-center gap-2 bg-emerald-500"
+        className="mx-auto mb-10 mt-6 flex items-center gap-2 bg-slate-500"
       >
         Get started
         <FiArrowRight />
@@ -34,11 +34,12 @@ const Left = () => (
   <div className="col-span-12 flex flex-col justify-between border-r border-neutral-700 md:col-span-6">
     <div className="px-6 py-20 md:px-12 md:py-24">
       <h1 className="text-4xl uppercase leading-tight md:text-5xl md:leading-tight">
-        <span className="text-emerald-300">How It Works </span>
-        with Logic Freight
+        <span className="text-slate-300">How It Works </span>
+        with Owner Driver Exchange
       </h1>
       <p className="mt-4 max-w-md text-lg text-neutral-400">
-        A simple 3-step process to keep your vehicles on the road and earning.
+        A simple 3-step process to keep your vehicles on the road and earning
+        with ODX.
       </p>
     </div>
   </div>
@@ -50,29 +51,22 @@ const Right = () => {
   return (
     <div className="col-span-12 flex flex-col justify-between md:col-span-6">
       <div className="relative h-[276px] overflow-hidden md:h-[372px]">
-        {CONTENT.map((c, itemIdx) => {
-          return (
-            <motion.div
-              initial={false}
-              animate={{
-                opacity: idx === itemIdx ? 1 : 0,
-                y: idx === itemIdx ? 0 : 24,
-                filter: idx === itemIdx ? "blur(0px)" : "blur(2px)",
-              }}
-              transition={{
-                ease: "easeInOut",
-                duration: 0.3,
-              }}
-              style={{
-                pointerEvents: idx === itemIdx ? "all" : "none",
-              }}
-              className="absolute inset-0 z-10 grid place-content-center space-y-3 px-6 text-base font-light leading-relaxed text-neutral-400 md:px-12 md:text-lg"
-              key={itemIdx}
-            >
-              {c.content}
-            </motion.div>
-          );
-        })}
+        {CONTENT.map((c, itemIdx) => (
+          <motion.div
+            initial={false}
+            animate={{
+              opacity: idx === itemIdx ? 1 : 0,
+              y: idx === itemIdx ? 0 : 24,
+              filter: idx === itemIdx ? "blur(0px)" : "blur(2px)",
+            }}
+            transition={{ ease: "easeInOut", duration: 0.3 }}
+            style={{ pointerEvents: idx === itemIdx ? "all" : "none" }}
+            className="absolute inset-0 z-10 grid place-content-center space-y-3 px-6 text-base font-light leading-relaxed text-neutral-400 md:px-12 md:text-lg"
+            key={itemIdx}
+          >
+            {c.content}
+          </motion.div>
+        ))}
 
         <span className="pointer-events-none absolute -right-0 bottom-0 z-0 text-7xl text-neutral-800">
           {idx + 1}/{CONTENT.length}
@@ -94,9 +88,7 @@ const Buttons = ({
   return (
     <div className="relative grid h-[57px] grid-cols-2 border-t border-neutral-700">
       <ShiftButton
-        onClick={() => {
-          setIdx((pv) => (pv === 0 ? CONTENT.length - 1 : pv - 1));
-        }}
+        onClick={() => setIdx((pv) => (pv === 0 ? CONTENT.length - 1 : pv - 1))}
         topDivClasses="bg-neutral-900"
         bottomDivClasses="bg-neutral-950"
       >
@@ -106,9 +98,7 @@ const Buttons = ({
         topDivClasses="bg-neutral-900"
         btnClasses="border-neutral-700 border-l"
         bottomDivClasses="bg-neutral-950"
-        onClick={() => {
-          setIdx((pv) => (pv === CONTENT.length - 1 ? 0 : pv + 1));
-        }}
+        onClick={() => setIdx((pv) => (pv === CONTENT.length - 1 ? 0 : pv + 1))}
       >
         <FiArrowRight className="mx-auto text-xl" />
       </ShiftButton>
@@ -118,9 +108,9 @@ const Buttons = ({
         initial={{ width: "0%" }}
         animate={{ width: "100%" }}
         transition={{ duration: 12, ease: "linear" }}
-        onAnimationComplete={() => {
-          setIdx((pv) => (pv === CONTENT.length - 1 ? 0 : pv + 1));
-        }}
+        onAnimationComplete={() =>
+          setIdx((pv) => (pv === CONTENT.length - 1 ? 0 : pv + 1))
+        }
         className="pointer-events-none absolute -top-[1px] bottom-0 z-20 bg-neutral-600/10"
       />
     </div>
@@ -141,12 +131,7 @@ const ShiftButton = ({
   bottomDivClasses?: string;
 }) => {
   return (
-    <MotionConfig
-      transition={{
-        ease: "circOut",
-        duration: 0.25,
-      }}
-    >
+    <MotionConfig transition={{ ease: "circOut", duration: 0.25 }}>
       <motion.button
         initial="initial"
         whileHover="hovered"
@@ -157,10 +142,7 @@ const ShiftButton = ({
         onClick={onClick}
       >
         <motion.div
-          variants={{
-            initial: { y: "0%" },
-            hovered: { y: "-100%" },
-          }}
+          variants={{ initial: { y: "0%" }, hovered: { y: "-100%" } }}
           className={twMerge(
             "grid h-full place-content-center bg-neutral-950",
             topDivClasses
@@ -169,10 +151,7 @@ const ShiftButton = ({
           {children}
         </motion.div>
         <motion.div
-          variants={{
-            initial: { y: "100%" },
-            hovered: { y: "0%" },
-          }}
+          variants={{ initial: { y: "100%" }, hovered: { y: "0%" } }}
           className={twMerge(
             "absolute inset-0 grid h-full place-content-center",
             bottomDivClasses
@@ -194,7 +173,7 @@ const CONTENT = [
         </p>
         <p>
           Submit your business details, insurance documents, and company
-          letterhead online. We’ll get you approved quickly and easily.
+          letterhead online. ODX gets you approved quickly and easily.
         </p>
       </>
     ),
@@ -206,7 +185,7 @@ const CONTENT = [
           <span className="text-white">Step 2: Get Matched with Jobs</span>
         </p>
         <p>
-          After approval, we connect you with full or part-load haulage jobs
+          After approval, ODX connects you with full or part-load haulage jobs
           across the UK, tailored to your route and availability.
         </p>
       </>
@@ -220,7 +199,8 @@ const CONTENT = [
         </p>
         <p>
           Fill your return legs with paying loads and maximise efficiency. Your
-          vehicles stay on the road, and you stay profitable.
+          vehicles stay on the road, and you stay profitable with Owner Driver
+          Exchange.
         </p>
       </>
     ),
