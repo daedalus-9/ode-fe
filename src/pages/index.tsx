@@ -1,153 +1,39 @@
-import { CountryLinksSection } from "@/components/countryLinksSection/CountryLinksSection";
-import { CTA } from "@/components/cta/CTA";
-import { Customers } from "@/components/customers/Customers";
-import Carousel from "@/components/features/carousel/Carousel";
-import { CodeDemo } from "@/components/features/code/CodeDemo";
-import { FeatureGrid } from "@/components/features/grid/FeatureGrid";
-import { Stats } from "@/components/features/stats/Stats";
-import { FiftyFiftyCard } from "@/components/fiftyFiftyCard/fiftyFiftyCard";
-import Footer from "@/components/footer/Footer";
-import { Hero } from "@/components/hero/Hero";
+import { PartnerJoinForm } from "@/components/partnerJoinForm/PartnerJoinForm";
 import { PlaceTruckForm } from "@/components/placeTruckForm/PlaceTruckForm";
-import { TrustedAcrossUK } from "@/components/trustedAcrossUK/TrustedAcrossUK";
-import { Barlow } from "next/font/google";
-import Head from "next/head";
+import { SeoHead } from "@/components/seo/SeoHead";
+import { OdeContactLink } from "@/components/contact/OdeContactLink";
+import Image from "next/image";
+import Link from "next/link";
 
-const barlowFont = Barlow({
-  subsets: ["latin"],
-  style: ["italic", "normal"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
+const title = "Owner Driver Exchange | Share Vehicle Capacity for Review";
+const description = "Owner-drivers and transport providers can share genuine vehicle availability for review. Businesses seeking capacity can contact the team directly.";
 
 export default function Home() {
-  const title =
-    "Owner Driver Exchange | HGV & Owner Driver Loads Across the UK";
-  const description =
-    "Owner Driver Exchange connects UK owner drivers and small fleets with steady, ongoing haulage work. Post your truck availability, reduce empty miles, and get matched with businesses that need reliable transport across the UK.";
-
-  const keywords = [
-    "owner driver UK",
-    "owner driver loads",
-    "haulage work UK",
-    "HGV work",
-    "loads for owner drivers",
-    "reduce empty miles",
-    "owner driver jobs",
-    "HGV owner driver",
-    "UK haulage",
-    "transport work UK",
-    "owner driver exchange",
-    "find haulage work UK",
-    "ongoing haulage work",
-    "truck availability UK",
-    "backloads UK",
-  ];
-
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Owner Driver Exchange",
-    url: "https://www.ownerdriver.exchange",
-    description:
-      "Owner Driver Exchange connects UK owner drivers and small fleets with businesses that need regular, reliable transport. Post your truck availability and get matched with ongoing haulage work across the UK.",
-    email: "traffic@logic-freight.co.uk",
-    telephone: "+44 1633 441457",
-    logo: "https://www.ownerdriver.exchange/assets/images/logo.png",
-    image: "https://www.ownerdriver.exchange/assets/images/truck_bg.webp",
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "17:00",
-      },
-    ],
-  };
-
-  const breadcrumbData = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.ownerdriver.exchange",
-      },
-    ],
-  };
-
-  const serviceData = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Owner Driver Load Matching",
-    provider: {
-      "@type": "Organization",
-      name: "Owner Driver Exchange",
-    },
-    description:
-      "A UK platform that matches owner drivers and small haulage fleets with businesses seeking regular, reliable transport. Post your truck availability to find ongoing HGV work and reduce empty miles.",
-    areaServed: {
-      "@type": "Country",
-      name: "United Kingdom",
-    },
-    serviceType: "Haulage Load Matching",
-  };
-
   return (
-    <main className={barlowFont.className}>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="keywords" content={keywords.join(", ")} />
-        <link rel="canonical" href="https://www.ownerdriver.exchange" />
+    <main id="main-content" className="bg-zinc-950 text-zinc-100">
+      <SeoHead title={title} description={description} path="/" />
+      <section className="relative isolate overflow-hidden border-b border-zinc-800">
+        <Image src="/assets/images/truck_bg.webp" alt="" fill priority sizes="100vw" className="-z-20 object-cover opacity-25" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black via-zinc-950/95 to-zinc-950/55" />
+        <div className="mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-5 py-24 sm:px-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div><p className="text-sm font-bold uppercase tracking-[0.22em] text-amber-300">For working transport operators</p><h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl">Share genuine vehicle capacity. Start the right conversation.</h1><p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">Owner Driver Exchange provides an enquiry route for owner-drivers, transport providers and businesses seeking capacity. It is not presented as a live load board, and no load, rate or booking is guaranteed.</p><div className="mt-9 flex flex-wrap gap-4"><a href="#place-truck" className="rounded-full bg-amber-400 px-6 py-3.5 font-bold text-zinc-950 hover:bg-amber-300">Share vehicle capacity</a><Link href="/how-it-works/" className="rounded-full border border-zinc-600 px-6 py-3.5 font-semibold text-white hover:border-zinc-300">How it works</Link></div></div>
+          <aside className="rounded-3xl border border-zinc-700 bg-zinc-900/90 p-7 shadow-2xl"><h2 className="text-xl font-bold text-white">Choose the relevant route</h2><div className="mt-5 grid gap-4"><a href="#place-truck" className="rounded-2xl border border-amber-400/40 bg-amber-400/10 p-5 hover:bg-amber-400/15"><strong className="text-amber-300">I have vehicle capacity</strong><span className="mt-2 block text-sm leading-6 text-zinc-300">Share current location and availability for review.</span></a><OdeContactLink action="email" subject="Transport capacity enquiry" ariaLabel="Email Owner Driver Exchange about a transport requirement" className="rounded-2xl border border-zinc-700 bg-zinc-950 p-5 hover:border-zinc-500"><strong className="text-white">I need transport capacity</strong><span className="mt-2 block text-sm leading-6 text-zinc-400">Email collection, delivery, timing and freight details for review.</span></OdeContactLink></div></aside>
+        </div>
+      </section>
 
-        {/* Open Graph */}
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:url" content="https://www.ownerdriver.exchange" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Owner Driver Exchange" />
-        <meta
-          property="og:image"
-          content="https://www.ownerdriver.exchange/assets/images/truck_bg.webp"
-        />
+      <section className="py-20"><div className="mx-auto max-w-7xl px-5 sm:px-8"><div className="max-w-3xl"><p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">What users can do now</p><h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">Two audiences, two honest next steps</h2><p className="mt-4 text-lg leading-8 text-zinc-400">The interface separates supported enquiry journeys instead of implying live searches, instant matching or current marketplace activity.</p></div><div className="mt-10 grid gap-6 md:grid-cols-2"><div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-7"><h3 className="text-2xl font-bold text-white">Owner-drivers and transport providers</h3><p className="mt-4 leading-7 text-zinc-400">Submit genuine availability or make a partner enquiry. Details are recorded by the receiving system and reviewed by the team.</p><a className="mt-6 inline-flex font-bold text-amber-300 underline underline-offset-4" href="#place-truck">Go to capacity form</a></div><div className="rounded-3xl border border-zinc-800 bg-black p-7"><h3 className="text-2xl font-bold text-white">Businesses seeking transport</h3><p className="mt-4 leading-7 text-zinc-400">Call or email collection, delivery, timing and freight details for direct review.</p><OdeContactLink action="call" className="mt-6 inline-flex font-bold text-amber-300 underline underline-offset-4">Call us</OdeContactLink></div></div></div></section>
 
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta
-          name="twitter:image"
-          content="https://www.ownerdriver.exchange/assets/images/truck_bg.webp"
-        />
+      <section className="border-y border-zinc-800 bg-black py-20"><div className="mx-auto max-w-7xl px-5 sm:px-8"><h2 className="text-3xl font-bold text-white sm:text-4xl">How the enquiry path works</h2><ol className="mt-10 grid gap-5 md:grid-cols-3">{[["Share current details","Provide accurate contact, location and availability information."],["The team reviews them","Suitability and any missing operational details are checked directly."],["Any next step is confirmed","Loads, rates, bookings, onboarding and commercial terms require separate confirmation."]].map(([heading,text],index)=><li key={heading} className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6"><span className="font-bold text-amber-300">0{index+1}</span><h3 className="mt-3 text-xl font-bold text-white">{heading}</h3><p className="mt-3 leading-7 text-zinc-400">{text}</p></li>)}</ol></div></section>
 
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceData) }}
-        />
-      </Head>
+      <section className="border-b border-zinc-800 bg-zinc-900 py-14"><div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-5 sm:px-8 md:flex-row md:items-center"><div className="max-w-3xl"><p className="text-sm font-bold uppercase tracking-[0.18em] text-amber-300">Seasonal planning</p><h2 className="mt-3 text-3xl font-bold text-white">Prepare for harvest, retail peaks and Christmas shutdowns</h2><p className="mt-3 leading-7 text-zinc-400">The guide explains how operators can share dated capacity and how businesses can prepare a specific requirement without implying live marketplace activity.</p></div><Link href="/peak-period-haulage-capacity/" className="rounded-full border border-amber-400 px-6 py-3 font-bold text-amber-300 hover:bg-amber-400 hover:text-zinc-950">Open the peak-capacity guide</Link></div></section>
 
-      <Hero />
-      {/* <PlaceTruckForm /> */}
-      <TrustedAcrossUK />
-      <CountryLinksSection />
-      <FeatureGrid />
-      <CodeDemo />
-      <Carousel />
-      {/* <Customers /> */}
-      {/* <Stats /> */}
-      <FiftyFiftyCard />
-      <CTA />
+      <section className="border-b border-zinc-800 bg-black py-14"><div className="mx-auto grid max-w-7xl items-center gap-8 px-5 sm:px-8 lg:grid-cols-[1fr_0.7fr]"><div><p className="text-sm font-bold uppercase tracking-[0.18em] text-amber-300">Road coverage</p><h2 className="mt-3 text-3xl font-bold text-white">England, mainland Scotland and Wales</h2><p className="mt-4 max-w-3xl leading-7 text-zinc-400">Browse directional city routes and postcode-area guidance, then share dated capacity or a specific transport requirement. Ferry-dependent movements are excluded.</p><div className="mt-5 flex flex-wrap gap-4"><Link href="/haulage-routes/" className="font-bold text-amber-300 underline underline-offset-4">City-to-city routes</Link><Link href="/haulage-postcodes/" className="font-bold text-amber-300 underline underline-offset-4">Postcode areas</Link></div></div><Link href="/great-britain-haulage-coverage/" className="justify-self-start rounded-full bg-amber-400 px-6 py-3 font-bold text-zinc-950 hover:bg-amber-300 lg:justify-self-end">Explore road coverage</Link></div></section>
+
+      <section id="place-truck" className="scroll-mt-24 py-20"><div className="mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">Capacity enquiry</p><h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">Tell the team where your vehicle is available</h2><p className="mt-4 leading-7 text-zinc-400">Use current information. The submission is private to the receiving process and is not shown as a public listing on this website.</p><p className="mt-6 text-sm leading-6 text-zinc-500">Name, email, location and available-from date are required. A phone number is optional.</p></div><PlaceTruckForm /></div></section>
+
+      <section id="partner" className="scroll-mt-24 border-t border-zinc-800 bg-black py-20"><div className="mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">Partner enquiry</p><h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">Start with a simple contact form</h2><p className="mt-4 leading-7 text-zinc-400">The partner route records name, email, phone and communication preference. Additional checks and any commercial relationship happen separately.</p></div><PartnerJoinForm /></div></section>
+
+      <section className="border-t border-zinc-800 py-20"><div className="mx-auto max-w-4xl px-5 sm:px-8"><h2 className="text-3xl font-bold text-white">Common questions</h2><div className="mt-8 divide-y divide-zinc-800 border-y border-zinc-800"><details className="py-5"><summary className="cursor-pointer font-semibold text-white">Does submitting capacity guarantee a load?</summary><p className="mt-3 leading-7 text-zinc-400">No. It records current availability for review. A load, rate and booking must be confirmed separately.</p></details><details className="py-5"><summary className="cursor-pointer font-semibold text-white">Is this a public live-load board?</summary><p className="mt-3 leading-7 text-zinc-400">The repository does not implement a public searchable load board. Current supported actions are capacity and partner enquiries plus direct contact.</p></details><details className="py-5"><summary className="cursor-pointer font-semibold text-white">What should a business with freight do?</summary><p className="mt-3 leading-7 text-zinc-400">Call or email the team with collection, delivery, timing and freight details so the requirement can be reviewed.</p></details></div></div></section>
     </main>
   );
 }

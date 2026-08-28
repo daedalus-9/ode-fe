@@ -28,7 +28,7 @@ export const Content = () => {
             A smarter way to get matched with{" "}
             <strong>ongoing owner driver loads</strong> across the UK. Reduce
             empty miles, boost earnings, and connect with businesses that need
-            regular transport in England, Scotland, Wales, and Northern Ireland.
+            regular transport in England, mainland Scotland and Wales.
             </SectionSubheading>
         </SectionHeadingSpacing>
 

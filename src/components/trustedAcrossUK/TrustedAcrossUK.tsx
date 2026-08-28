@@ -45,7 +45,7 @@ export const TrustedAcrossUK = () => {
         Owner Driver Exchange connects UK-based owner drivers and small fleets
         with <strong>ongoing haulage work</strong>. Share your truck
         availability to reduce empty miles, boost earnings, and secure reliable
-        routes across England, Scotland, Wales, and Northern Ireland.
+        routes across England, mainland Scotland and Wales.
       </motion.p>
     </section>
   );
@@ -76,7 +76,6 @@ const RegionItems = () => (
     <Region name="South Wales" />
     <Region name="Midlands" />
     <Region name="South West" />
-    <Region name="Northern Ireland" />
   </>
 );
 

@@ -1,27 +1,5 @@
-# ===============================
-# Return Loads UK - Robots.txt
-# Optimized for SEO & Crawl Efficiency
-# ===============================
-
-# Allow all main search engines to crawl the site
 User-agent: *
-Disallow: /admin/
-Disallow: /login/
-Disallow: /checkout/
 Disallow: /api/
-Disallow: /drafts/
-Disallow: /private/
 Allow: /
 
-# Crawl-delay can be used if your server is slow
-# Crawl-delay: 5
-
-# Explicitly allow Googlebot full access
-User-agent: Googlebot
-Allow: /
-
-# Sitemap location
-Sitemap: https://www.returnloadsuk.co.uk/sitemap.xml
-
-# Host (optional)
-Host: https://www.returnloadsuk.co.uk
+Sitemap: https://www.ownerdriverexchange.co.uk/sitemap.xml

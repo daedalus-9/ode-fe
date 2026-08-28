@@ -1,0 +1,18 @@
+import { SeoHead } from "@/components/seo/SeoHead";
+import Link from "next/link";
+import { OdeContactLink } from "@/components/contact/OdeContactLink";
+
+const title = "How Owner Driver Exchange Enquiries Work";
+const description = "See how transport providers share capacity, how businesses request transport support and what still requires direct confirmation.";
+
+export default function HowItWorksPage() {
+  return (
+    <main id="main-content" className="bg-zinc-950 text-zinc-100">
+      <SeoHead title={title} description={description} path="/how-it-works/" />
+      <section className="border-b border-zinc-800 bg-black py-20"><div className="mx-auto max-w-5xl px-5 sm:px-8"><p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">Available journeys</p><h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">How Owner Driver Exchange works</h1><p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-400">The site supports capacity and partner enquiries plus direct phone and email contact. It is not a public load search, live marketplace feed or automated matching dashboard.</p></div></section>
+      <section className="mx-auto max-w-5xl px-5 py-16 sm:px-8"><div className="grid gap-6 md:grid-cols-2"><article className="rounded-3xl border border-zinc-800 bg-zinc-900 p-7"><p className="text-sm font-bold uppercase tracking-[0.18em] text-amber-300">Transport providers</p><h2 className="mt-3 text-2xl font-bold text-white">Share genuine vehicle availability</h2><ol className="mt-5 space-y-4 leading-7 text-zinc-400"><li>1. Provide contact details, current location and availability dates.</li><li>2. Add vehicle or direction notes when useful.</li><li>3. The backend records the enquiry for review.</li><li>4. Any load, rate or booking is confirmed separately.</li></ol></article><article className="rounded-3xl border border-zinc-800 bg-black p-7"><p className="text-sm font-bold uppercase tracking-[0.18em] text-amber-300">Load providers</p><h2 className="mt-3 text-2xl font-bold text-white">Contact the team with the requirement</h2><ol className="mt-5 space-y-4 leading-7 text-zinc-400"><li>1. Share collection, delivery, timing and freight details.</li><li>2. Explain access or handling constraints.</li><li>3. The team reviews whether suitable support can be coordinated.</li><li>4. Availability and commercial terms are confirmed directly.</li></ol></article></div></section>
+      <section className="border-y border-zinc-800 bg-zinc-900 py-14"><div className="mx-auto max-w-5xl px-5 sm:px-8"><h2 className="text-2xl font-bold text-white">What a submission means</h2><p className="mt-4 max-w-3xl leading-7 text-zinc-400">A successful form response means the backend accepted and stored the submitted details. Email notification may be attempted separately. It does not mean a match, booking, job, rate, account or partnership has been created.</p></div></section>
+      <section className="py-14"><div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 px-5 sm:px-8 md:flex-row md:items-center"><div><h2 className="text-2xl font-bold text-white">Choose your next step</h2><p className="mt-2 text-zinc-400">Use the homepage forms or contact the team directly.</p></div><div className="flex flex-wrap gap-3"><Link href="/#place-truck" className="rounded-full bg-amber-400 px-6 py-3 font-bold text-zinc-950">Share capacity</Link><OdeContactLink action="email" subject="Transport capacity enquiry" ariaLabel="Email Owner Driver Exchange about a transport requirement" className="rounded-full border border-zinc-600 px-6 py-3 font-semibold text-white">Email a requirement</OdeContactLink></div></div></section>
+    </main>
+  );
+}

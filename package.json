@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/validate-seo.cjs",
+    "test:mock-api": "node scripts/mock-api.cjs"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.8",

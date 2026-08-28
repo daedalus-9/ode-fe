@@ -1,183 +1,87 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { OdeContactLink } from "@/components/contact/OdeContactLink";
+import Link from "next/link";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
-interface PartnerJoinFormProps {
-  region?: string;
-  className?: string;
-}
+interface PartnerJoinFormProps { region?: string; className?: string }
+type Status = { kind: "idle" | "submitting" | "success" | "error"; message: string };
+const REQUEST_TIMEOUT_MS = 12_000;
 
-export function PartnerJoinForm({
-  region = "UK",
-  className,
-}: PartnerJoinFormProps) {
-  const [formData, setFormData] = useState({
-    fullname: "",
-    email: "",
-    phoneNumber: "",
-    optOut: false,
-  });
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
-  const [submittedName, setSubmittedName] = useState("");
+export function PartnerJoinForm({ region = "Great Britain", className = "" }: PartnerJoinFormProps) {
+  const [status, setStatus] = useState<Status>({ kind: "idle", message: "" });
+  const statusRef = useRef<HTMLDivElement>(null);
+  const submittingRef = useRef(false);
+  const submissionIdRef = useRef<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [id]: type === "checkbox" ? checked : value,
-    }));
-  };
+  useEffect(() => {
+    if (status.kind === "success" || status.kind === "error") statusRef.current?.focus();
+  }, [status.kind]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus("idle");
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (submittingRef.current) return;
+    const form = event.currentTarget;
+    const fields = new FormData(form);
+    const apiBase = process.env.NEXT_PUBLIC_API_URL?.trim() || (process.env.NODE_ENV === "development" ? "http://localhost:3001" : "");
+    if (!apiBase) {
+      setStatus({ kind: "error", message: "We could not send your details online. Please call or email us and try again after the site configuration has been checked." });
+      return;
+    }
 
+    const marketingConsent = fields.get("marketingConsent") === "on";
+    submittingRef.current = true;
+    submissionIdRef.current ||= window.crypto.randomUUID();
+    setStatus({ kind: "submitting", message: "Sending your details…" });
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/partner-join`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...formData,
-            region,
-          }),
-        }
-      );
-
-      if (!response.ok) throw new Error("Failed to submit form");
-
-      setSubmittedName(formData.fullname);
-      setStatus("success");
-      setFormData({
-        fullname: "",
-        email: "",
-        phoneNumber: "",
-        optOut: false,
+      const response = await fetch(`${apiBase.replace(/\/$/, "")}/partner-join`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          submissionId: submissionIdRef.current,
+          sourceSite: "Owner Driver Exchange",
+          sourceUrl: window.location.href,
+          fullname: fields.get("fullname")?.toString() || "",
+          email: fields.get("email")?.toString() || "",
+          phoneNumber: fields.get("phoneNumber")?.toString() || "",
+          marketingConsent,
+          optOut: !marketingConsent,
+          region,
+          website: fields.get("website")?.toString() || "",
+        }),
+        signal: controller.signal,
       });
+      if (!response.ok) throw new Error(`Partner endpoint returned ${response.status}`);
+      form.reset();
+      submissionIdRef.current = null;
+      setStatus({ kind: "success", message: "Your contact details have been received for review. This does not guarantee work, rates or partner acceptance." });
     } catch (error) {
       console.error(error);
-      setStatus("error");
+      setStatus({ kind: "error", message: "We could not confirm that your details were received. Please try again, call us or email us." });
     } finally {
-      setLoading(false);
+      window.clearTimeout(timeout);
+      submittingRef.current = false;
     }
-  };
+  }
 
+  const inputClass = "rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-zinc-100 placeholder:text-zinc-500 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20 disabled:opacity-60";
+  const disabled = status.kind === "submitting";
   return (
-    <div
-      id="form"
-      className={cn(
-        "shadow-input m-auto w-full max-w-lg rounded-none bg-white p-6 md:rounded-2xl md:p-10 dark:bg-black",
-        className
-      )}
-    >
-      <h2 className="text-2xl font-bold text-neutral-800 sm:text-3xl md:text-4xl dark:text-neutral-200">
-        Join the Logic Freight Partner Network
-      </h2>
-
-      <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
-        Become part of Logic Freight’s nationwide haulage network. We help
-        transport companies secure consistent work and optimise{" "}
-        <strong>return loads</strong> across England, Scotland, and Wales.
-        Increase utilisation, reduce dead mileage, and connect with partners
-        looking for reliable UK freight solutions.
-      </p>
-
-      <form className="my-10 space-y-6" onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-4">
-          <Label htmlFor="fullname" className="text-base md:text-lg">
-            Full Name
-          </Label>
-          <Input
-            id="fullname"
-            placeholder="John Smith"
-            type="text"
-            value={formData.fullname}
-            onChange={handleChange}
-            className="h-12 text-base md:h-14 md:text-lg"
-            required
-          />
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <Label htmlFor="email" className="text-base md:text-lg">
-            Email Address
-          </Label>
-          <Input
-            id="email"
-            placeholder="john@example.com"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="h-12 text-base md:h-14 md:text-lg"
-            required
-          />
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <Label htmlFor="phoneNumber" className="text-base md:text-lg">
-            Phone Number
-          </Label>
-          <Input
-            id="phoneNumber"
-            placeholder="+44 7123 456 789"
-            type="tel"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            className="h-12 text-base md:h-14 md:text-lg"
-            required
-          />
-        </div>
-
-        {/* Opt-out Checkbox */}
-        <div className="flex items-start gap-3">
-          <Input
-            id="optOut"
-            type="checkbox"
-            checked={formData.optOut}
-            onChange={handleChange}
-            className="mt-1 h-5 w-5 rounded border-neutral-300 text-black focus:ring-2 focus:ring-black dark:border-neutral-600 dark:text-white"
-          />
-          <Label
-            htmlFor="optOut"
-            className="text-sm leading-snug text-neutral-700 dark:text-neutral-300"
-          >
-            You may receive occasional updates and partner information from
-            Logic Freight. Tick this box if you <strong>do not</strong> want to
-            receive these communications.
-          </Label>
-        </div>
-
-        <button
-          type="submit"
-          disabled={loading}
-          className={cn(
-            "group relative block h-12 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 text-lg font-medium text-white transition-transform duration-200 hover:scale-[1.02] md:h-14 md:text-xl",
-            loading && "cursor-not-allowed opacity-70"
-          )}
-        >
-          {loading ? "Submitting..." : "Submit"}
-        </button>
-
-        {status === "success" && (
-          <p className="text-center font-medium text-green-600">
-            Thank you {submittedName || "for your enquiry"}. We’ll be in touch
-            soon.
-          </p>
-        )}
-        {status === "error" && (
-          <p className="text-center font-medium text-red-600">
-            Something went wrong. Please try again later.
-          </p>
-        )}
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className={`rounded-3xl border border-zinc-800 bg-zinc-900 p-6 sm:p-8 ${className}`} aria-labelledby="partner-form-heading" aria-busy={disabled}>
+      <h2 id="partner-form-heading" className="text-2xl font-bold text-white sm:text-3xl">Start a partner enquiry</h2>
+      <p className="mt-3 leading-7 text-zinc-400">Share contact details for an initial review. No work, onboarding or commercial terms are promised by submitting this form.</p>
+      <fieldset disabled={disabled} className="mt-7 grid gap-5">
+        <label className="grid gap-2 text-sm font-semibold text-zinc-200">Full name<input className={inputClass} name="fullname" required minLength={2} maxLength={100} autoComplete="name" /></label>
+        <label className="grid gap-2 text-sm font-semibold text-zinc-200">Email address<input className={inputClass} name="email" type="email" required maxLength={160} autoComplete="email" /></label>
+        <label className="grid gap-2 text-sm font-semibold text-zinc-200">Phone number<input className={inputClass} name="phoneNumber" type="tel" required maxLength={30} autoComplete="tel" /></label>
+        <label className="flex items-start gap-3 text-sm leading-6 text-zinc-400"><input className="mt-1 h-5 w-5 rounded border-zinc-600" name="marketingConsent" type="checkbox" /><span>I would like to receive occasional partner-related updates. This is optional and does not affect this enquiry.</span></label>
+      </fieldset>
+      <div className="absolute left-[-9999px]" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
+      <p className="mt-5 text-sm leading-6 text-zinc-400">Owner Driver Exchange uses these details to review and respond to the enquiry. Read the <Link href="/privacy-policy/" className="font-bold text-amber-300 underline underline-offset-4">privacy notice</Link>.</p>
+      <button disabled={disabled} type="submit" className="mt-7 w-full rounded-full border border-amber-400 px-6 py-3.5 font-bold text-amber-300 hover:bg-amber-400 hover:text-zinc-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400 disabled:cursor-wait disabled:opacity-70">{disabled ? "Sending…" : "Send partner enquiry"}</button>
+      {status.kind !== "idle" && <div ref={statusRef} tabIndex={-1} role={status.kind === "error" ? "alert" : "status"} aria-live={status.kind === "error" ? "assertive" : "polite"} className={`mt-5 rounded-xl p-4 text-sm leading-6 outline-none focus:ring-2 focus:ring-amber-400 ${status.kind === "success" ? "bg-emerald-950 text-emerald-200" : disabled ? "bg-zinc-800 text-zinc-200" : "bg-amber-950 text-amber-200"}`}><p>{status.message}</p>{status.kind === "error" && <div className="mt-3 flex gap-4"><OdeContactLink action="call" className="font-bold underline">Call us</OdeContactLink><OdeContactLink action="email" subject="Partner enquiry" className="font-bold underline">Email us</OdeContactLink></div>}</div>}
+    </form>
   );
 }

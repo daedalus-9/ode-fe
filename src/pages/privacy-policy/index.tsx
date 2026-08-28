@@ -1,128 +1,24 @@
-import { MaxWidthWrapper } from "@/components/utils/MaxWidthWrapper";
+import { OdeContactLink } from "@/components/contact/OdeContactLink";
+import { SeoHead } from "@/components/seo/SeoHead";
 
-export const metadata = {
-  title: "Privacy Policy | Logic Freight",
-  description:
-    "Learn how Logic Freight collects, uses, and protects your information. We value your privacy and comply with UK GDPR regulations.",
-  openGraph: {
-    title: "Privacy Policy | Logic Freight",
-    description:
-      "Learn how Logic Freight collects, uses, and protects your information. We value your privacy and comply with UK GDPR regulations.",
-    images: ["/assets/images/logo.png"],
-  },
-};
+const title = "Privacy Notice | Owner Driver Exchange";
+const description = "How Owner Driver Exchange handles contact, vehicle-capacity and partner enquiry information submitted through this website.";
 
-export default function PrivacyPolicy() {
+export default function PrivacyPolicyPage() {
   return (
-    <main className="bg-zinc-950 py-24 text-zinc-50">
-      <MaxWidthWrapper className="max-w-4xl px-6">
-        <h1 className="mb-6 text-4xl font-extrabold text-zinc-50">
-          Privacy Policy
-        </h1>
-        <p className="mb-10 text-zinc-400">
-          <strong>Last updated:</strong>{" "}
-          {new Date().toLocaleDateString("en-GB")}
-        </p>
-
-        <section className="mb-12 space-y-6">
-          <p className="leading-relaxed text-zinc-300">
-            Logic Freight (“we”, “us”, or “our”) respects your privacy and is
-            committed to protecting your personal data. This Privacy Policy
-            explains how we collect and use your information when you use our
-            website or contact us.
-          </p>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-zinc-50">
-            Information We Collect
-          </h2>
-          <ul className="list-inside list-disc space-y-2 text-zinc-300">
-            <li>
-              Information you provide through our online forms, such as your
-              name, email address, phone number, and company details.
-            </li>
-            <li>
-              Basic website usage data (such as page visits) collected through
-              standard analytics tools.
-            </li>
-          </ul>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-zinc-50">
-            How We Use Your Information
-          </h2>
-          <ul className="list-inside list-disc space-y-2 text-zinc-300">
-            <li>
-              To respond to your enquiries and process your haulage requests.
-            </li>
-            <li>To manage and improve our services and website performance.</li>
-            <li>
-              To contact you with relevant updates or marketing (if you have
-              opted in).
-            </li>
-          </ul>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-zinc-50">
-            Mailing Lists & Marketing
-          </h2>
-          <p className="leading-relaxed text-zinc-300">
-            If you sign up to receive updates, your details may be stored
-            securely with an email marketing service such as Mailchimp. You can
-            unsubscribe from these communications at any time.
-          </p>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-zinc-50">
-            Data Storage & Protection
-          </h2>
-          <p className="leading-relaxed text-zinc-300">
-            We store personal information securely and only retain it for as
-            long as necessary for legitimate business purposes. We do not sell,
-            rent, or share your data with third parties for their own marketing.
-          </p>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-zinc-50">
-            Your Rights
-          </h2>
-          <p className="leading-relaxed text-zinc-300">
-            Under UK GDPR, you have the right to access, correct, or delete your
-            personal information. To make a request, please contact us at{" "}
-            <a
-              href="mailto:traffic@logic-freight.co.uk"
-              className="text-zinc-50 underline transition hover:text-zinc-400"
-            >
-              traffic@logic-freight.co.uk
-            </a>
-            .
-          </p>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-zinc-50">
-            Contact Us
-          </h2>
-          <p className="leading-relaxed text-zinc-300">
-            For any questions about this Privacy Policy, contact:
-            <br />
-            <strong className="text-zinc-200">Logic Freight</strong>
-            <br />
-            Email:{" "}
-            <a
-              href="mailto:traffic@logic-freight.co.uk"
-              className="text-zinc-50 underline transition hover:text-zinc-400"
-            >
-              traffic@logic-freight.co.uk
-            </a>
-          </p>
-        </section>
-      </MaxWidthWrapper>
+    <main id="main-content" className="bg-zinc-950 py-16 text-zinc-100 sm:py-24">
+      <SeoHead title={title} description={description} path="/privacy-policy/" noindex />
+      <article className="mx-auto max-w-4xl px-5 sm:px-8">
+        <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-300">Privacy notice</p>
+        <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">How enquiry information is handled</h1>
+        <p className="mt-5 text-lg leading-8 text-zinc-400">Owner Driver Exchange receives the information submitted through this website so capacity, transport and partner enquiries can be reviewed and answered.</p>
+        <div className="mt-10 grid gap-6">
+          <section className="rounded-3xl border border-zinc-800 bg-zinc-900 p-7"><h2 className="text-2xl font-bold text-white">Information collected</h2><p className="mt-3 leading-7 text-zinc-300">Forms collect contact details and, depending on the journey, vehicle location, availability dates, optional capacity notes, communication preference, source website, page URL and a backend-generated submission time.</p></section>
+          <section className="rounded-3xl border border-zinc-800 bg-black p-7"><h2 className="text-2xl font-bold text-white">How it is used</h2><p className="mt-3 leading-7 text-zinc-300">The receiving system validates and stores the submission, sends a receipt and an internal notification, and enables the team to respond. Optional updates are sent only when the separate marketing checkbox is selected.</p></section>
+          <section className="rounded-3xl border border-zinc-800 bg-zinc-900 p-7"><h2 className="text-2xl font-bold text-white">Storage and service providers</h2><p className="mt-3 leading-7 text-zinc-300">Submissions are stored in the configured database and sent through the configured email service. Access and retention should be limited to what is needed for enquiry handling, legal obligations and security. Production owners must keep provider access and retention rules under review.</p></section>
+          <section className="rounded-3xl border border-zinc-800 bg-black p-7"><h2 className="text-2xl font-bold text-white">Questions about your information</h2><p className="mt-3 leading-7 text-zinc-300">Ask about access, correction or deletion by using the actions below. Whether information can be deleted depends on any legal obligation to retain it.</p><div className="mt-5 flex flex-wrap gap-3"><OdeContactLink action="email" subject="Privacy request" ariaLabel="Email Owner Driver Exchange about a privacy request" className="rounded-full bg-amber-400 px-5 py-3 font-bold text-zinc-950">Email us</OdeContactLink><OdeContactLink action="call" className="rounded-full border border-zinc-600 px-5 py-3 font-bold text-white">Call us</OdeContactLink></div></section>
+        </div>
+      </article>
     </main>
   );
 }
